@@ -12,18 +12,9 @@ import io.ktor.routing.*
 fun Application.configureSerialization() {
     install(ContentNegotiation) {
         gson {
-            }
+        }
         jackson {
-                enable(SerializationFeature.INDENT_OUTPUT)
-            }
-    }
-
-    routing {
-        get("/json/gson") {
-                call.respond(mapOf("hello" to "world"))
-            }
-        get("/json/jackson") {
-                call.respond(mapOf("hello" to "world"))
-            }
+            enable(SerializationFeature.INDENT_OUTPUT)
+        }
     }
 }
