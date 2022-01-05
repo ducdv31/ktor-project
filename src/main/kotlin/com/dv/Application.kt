@@ -1,7 +1,9 @@
 package com.dv
 
+import com.dv.db.DatabaseConnection
 import io.ktor.application.*
 import com.dv.plugins.*
+import com.dv.plugins.login.userRegistration
 
 fun main(args: Array<String>): Unit =
     io.ktor.server.netty.EngineMain.main(args)
@@ -10,6 +12,9 @@ fun main(args: Array<String>): Unit =
 fun Application.module() {
     configureSecurity()
     configureSerialization()
+    /* config database */
+    DatabaseConnection.init()
     /* routing */
+    userRegistration()
     configureRouting()
 }
